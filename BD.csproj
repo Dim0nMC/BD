@@ -110,44 +110,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminLogin.cs">
+    <Compile Include="Forms\AdminLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminLogin.Designer.cs">
+    <Compile Include="Forms\AdminLogin.Designer.cs">
       <DependentUpon>AdminLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Client.cs">
+    <Compile Include="Forms\Client.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Client.Designer.cs">
+    <Compile Include="Forms\Client.Designer.cs">
       <DependentUpon>Client.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClientLogin.cs">
+    <Compile Include="Forms\ClientLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ClientLogin.Designer.cs">
+    <Compile Include="Forms\ClientLogin.Designer.cs">
       <DependentUpon>ClientLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataBank.cs" />
-    <Compile Include="MYProperties.cs" />
-    <Compile Include="Start.cs">
+    <Compile Include="Classes\DataBank.cs" />
+    <Compile Include="Classes\MYProperties.cs" />
+    <Compile Include="Forms\Start.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Start.Designer.cs">
+    <Compile Include="Forms\Start.Designer.cs">
       <DependentUpon>Start.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AdminLogin.resx">
+    <EmbeddedResource Include="Forms\AdminLogin.resx">
       <DependentUpon>AdminLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Client.resx">
+    <EmbeddedResource Include="Forms\Client.resx">
       <DependentUpon>Client.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ClientLogin.resx">
+    <EmbeddedResource Include="Forms\ClientLogin.resx">
       <DependentUpon>ClientLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Start.resx">
+    <EmbeddedResource Include="Forms\Start.resx">
       <DependentUpon>Start.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
