@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using Npgsql;
 
 namespace BD
 {
@@ -31,35 +32,97 @@ namespace BD
             if (clientLoginBox.Text == "Введите своё имя" || clientLoginBox.Text == "")
             {
                 MessageBox.Show("Ошибка имени пользователя", "Ошибка", MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }
-            else 
-            { 
-                DataBank.username = clientLoginBox.Text;
-                Client client = new Client();
-                client.Show();
-                this.Close();
+                return;
             }
             
-        }
-
-        private void userRegBt_Click(object sender, EventArgs e)
-        {
             
+
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;Database=postgres;User Id=postgres;password=" + MYProperties.password);
+            conn.Open();
+            NpgsqlCommand comm = new NpgsqlCommand();
+            comm.Connection = conn;
+            comm.CommandType = CommandType.Text;
+            comm.CommandText = "select имя from Заказчики";
+            NpgsqlDataReader reader = comm.ExecuteReader();
+            while (reader.Read())
+            {
+                string name  = reader.GetString(0);
+                if(clientLoginBox.Text == name)
+                {
+                    DataBank.username = clientLoginBox.Text;
+                    reader.Close();
+                    comm.Dispose();
+                    conn.Close();
+
+                    Client client = new Client();
+                    client.Show();
+                    this.Close();
+                    return;
+                }
+                
+            }
+            reader.Close();
+            comm.Dispose();
+            conn.Close();
+            MessageBox.Show("Вас нет в базе данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+
+
         }
 
-        private void userNameRegBox_MouseClick(object sender, MouseEventArgs e)
+        
+        private void clientNameRegBox_MouseClick(object sender, MouseEventArgs e)
         {
-            userNameRegBox.Text = "";
+            clientNameRegBox.Text = "";
         }
 
-        private void userAdressRegBox_MouseClick(object sender, MouseEventArgs e)
+        private void clientAdressRegBox_MouseClick(object sender, MouseEventArgs e)
         {
-            userAdressRegBox.Text = "";
+            clientAdressRegBox.Text = "";
         }
 
-        private void userPhoneRegBox_MouseClick(object sender, MouseEventArgs e)
+        private void clientPhoneRegBox_MouseClick(object sender, MouseEventArgs e)
         {
-            userPhoneRegBox.Text = "";
+            clientPhoneRegBox.Text = "";
+        }
+
+        private void clientRegBt_Click(object sender, EventArgs e)
+        {
+            if(clientNameRegBox.Text=="")
+            {
+                MessageBox.Show("Ошибка имени пользователя", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (clientAdressRegBox.Text == "")
+            {
+                MessageBox.Show("Ошибка адреса пользователя", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (clientPhoneRegBox.Text == "")
+            {
+                MessageBox.Show("Ошибка телефона пользователя", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            DataBank.username = clientNameRegBox.Text;
+            DataBank.useradress = clientAdressRegBox.Text;
+            DataBank.userphone = clientPhoneRegBox.Text;
+
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;Database=postgres;User Id=postgres;password=" + MYProperties.password);
+            conn.Open();
+            NpgsqlCommand comm = new NpgsqlCommand();
+            comm.Connection = conn; ;
+            comm.CommandType = CommandType.Text;
+            comm.CommandText = $"insert into Заказчики(имя,адрес_доставки,номер_телефона) values('{DataBank.username}','{DataBank.useradress}','{DataBank.userphone}')";
+
+            comm.ExecuteNonQuery();
+            comm.Dispose();
+            conn.Close();
+
+            Client client = new Client();
+            client.Show();
+            this.Close();
+            
         }
     }
 }
