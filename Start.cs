@@ -11,12 +11,13 @@ using Npgsql;
 
 namespace BD
 {
-    public partial class Form1 : Form
+    public partial class Start : Form
     {
-        public Form1()
+        public Start()
         {
             InitializeComponent();
-            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;Database=postgres;User Id=postgres;password=dimonos2003");
+            
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;Database=postgres;User Id=postgres;password="+MYProperties.password);
             conn.Open();
             NpgsqlCommand comm = new NpgsqlCommand();
             comm.Connection = conn; ;
@@ -27,14 +28,29 @@ namespace BD
             {
                 DataTable dt = new DataTable();
                 dt.Load(reader);
-                dataGridView1.DataSource = dt;
+                
             }
             comm.Dispose();
             conn.Close();
         }
         
-        private void Form1_Load(object sender, EventArgs e)
+       
+        private void Start_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void clientbt_Click(object sender, EventArgs e)
+        {
+            ClientLogin clientlogin = new ClientLogin();
+            clientlogin.Show();
+        }
+
+        private void adminbt_Click(object sender, EventArgs e)
+        {
+
+            AdminLogin adminlogin = new AdminLogin();
+            adminlogin.Show();
         }
     }
 }
