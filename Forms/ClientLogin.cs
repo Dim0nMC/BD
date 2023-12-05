@@ -44,6 +44,7 @@ namespace BD
             comm.CommandType = CommandType.Text;
             comm.CommandText = "select имя from Заказчики";
             NpgsqlDataReader reader = comm.ExecuteReader();
+            
             while (reader.Read())
             {
                 string name  = reader.GetString(0);
@@ -88,17 +89,17 @@ namespace BD
 
         private void clientRegBt_Click(object sender, EventArgs e)
         {
-            if(clientNameRegBox.Text=="")
+            if(clientNameRegBox.Text==""||clientNameRegBox.Text== "Введите своё имя")
             {
                 MessageBox.Show("Ошибка имени пользователя", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (clientAdressRegBox.Text == "")
+            if (clientAdressRegBox.Text == ""||clientAdressRegBox.Text== "Ваш адрес")
             {
                 MessageBox.Show("Ошибка адреса пользователя", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (clientPhoneRegBox.Text == "")
+            if (clientPhoneRegBox.Text == ""||clientPhoneRegBox.Text== "Номер телефона")
             {
                 MessageBox.Show("Ошибка телефона пользователя", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
