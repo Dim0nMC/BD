@@ -25,11 +25,18 @@ namespace BD
 
         private void clientLoginBt_Click(object sender, EventArgs e)
         {
+            if (clientLoginBox.Text == "Введите своё имя" || clientLoginBox.Text == "")
+            {
+                MessageBox.Show("Ошибка имени пользователя");
+            }
+            else 
+            { 
+                DataBank.username = clientLoginBox.Text;
+                Client client = new Client();
+                client.Show();
+                this.Close();
+            }
             
-            DataBank.username = clientLoginBox.Text;
-            Client client = new Client();
-            client.Show();
-            this.Close();
         }
     }
 }

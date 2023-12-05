@@ -39,7 +39,7 @@
             this.clientLoginBox.Name = "clientLoginBox";
             this.clientLoginBox.Size = new System.Drawing.Size(183, 22);
             this.clientLoginBox.TabIndex = 0;
-            this.clientLoginBox.Text = "Ведите своё имя";
+            this.clientLoginBox.Text = "Введите своё имя";
             this.clientLoginBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.clientLoginBox_MouseClick);
             // 
             // clientLoginBt

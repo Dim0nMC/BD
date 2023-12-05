@@ -8,21 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BD
+namespace BD.Forms
 {
-    public partial class Client : Form
+    public partial class Admin : Form
     {
-        public Client()
+        public Admin()
         {
             InitializeComponent();
         }
 
-        private void Client_Load(object sender, EventArgs e)
+        private void Admin_Load(object sender, EventArgs e)
         {
-            Username.Text = DataBank.username;
+            
+            Adminname.Text = DataBank.adminname;
             
         }
-
-        
     }
 }
