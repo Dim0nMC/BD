@@ -47,6 +47,12 @@
             this.quantityBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.balanceLabel = new System.Windows.Forms.Label();
+            this.ColumnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColumnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColumnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.orderListGP.SuspendLayout();
             this.doOrderGP.SuspendLayout();
             this.SuspendLayout();
@@ -83,12 +89,20 @@
             // 
             // orderList
             // 
+            this.orderList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ColumnHeader1,
+            this.ColumnHeader2,
+            this.ColumnHeader3,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6});
             this.orderList.HideSelection = false;
             this.orderList.Location = new System.Drawing.Point(6, 44);
             this.orderList.Name = "orderList";
             this.orderList.Size = new System.Drawing.Size(840, 409);
             this.orderList.TabIndex = 1;
             this.orderList.UseCompatibleStateImageBehavior = false;
+            this.orderList.View = System.Windows.Forms.View.Details;
             // 
             // reloadBt
             // 
@@ -238,6 +252,30 @@
             this.balanceLabel.TabIndex = 5;
             this.balanceLabel.Text = "0";
             // 
+            // ColumnHeader1
+            // 
+            this.ColumnHeader1.Text = "Изделие";
+            // 
+            // ColumnHeader2
+            // 
+            this.ColumnHeader2.Text = "Изготовитель";
+            // 
+            // ColumnHeader3
+            // 
+            this.ColumnHeader3.Text = "Номер набора";
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Количество";
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Цена";
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Статус";
+            // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -281,5 +319,11 @@
         private System.Windows.Forms.ComboBox kitComboBox;
         private System.Windows.Forms.ComboBox developerComboBox;
         private System.Windows.Forms.ComboBox modelComboBox;
+        private System.Windows.Forms.ColumnHeader ColumnHeader1;
+        private System.Windows.Forms.ColumnHeader ColumnHeader2;
+        private System.Windows.Forms.ColumnHeader ColumnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
     }
 }
