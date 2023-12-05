@@ -31,20 +31,20 @@
             this.Username = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.orderListGP = new System.Windows.Forms.GroupBox();
-            this.doOrderGP = new System.Windows.Forms.GroupBox();
-            this.modelListBox = new System.Windows.Forms.ListBox();
-            this.developerListBox = new System.Windows.Forms.ListBox();
-            this.kitListBox = new System.Windows.Forms.ListBox();
-            this.quantityBox = new System.Windows.Forms.TextBox();
-            this.priceBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.reloadBt = new System.Windows.Forms.Button();
             this.orderList = new System.Windows.Forms.ListView();
+            this.reloadBt = new System.Windows.Forms.Button();
+            this.doOrderGP = new System.Windows.Forms.GroupBox();
+            this.kitComboBox = new System.Windows.Forms.ComboBox();
+            this.developerComboBox = new System.Windows.Forms.ComboBox();
+            this.modelComboBox = new System.Windows.Forms.ComboBox();
+            this.confirmBt = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.priceBox = new System.Windows.Forms.TextBox();
+            this.quantityBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.balanceLabel = new System.Windows.Forms.Label();
             this.orderListGP.SuspendLayout();
@@ -81,122 +81,14 @@
             this.orderListGP.TabStop = false;
             this.orderListGP.Text = "Список Заказов";
             // 
-            // doOrderGP
+            // orderList
             // 
-            this.doOrderGP.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.doOrderGP.Controls.Add(this.button1);
-            this.doOrderGP.Controls.Add(this.label6);
-            this.doOrderGP.Controls.Add(this.label5);
-            this.doOrderGP.Controls.Add(this.label4);
-            this.doOrderGP.Controls.Add(this.label3);
-            this.doOrderGP.Controls.Add(this.label2);
-            this.doOrderGP.Controls.Add(this.priceBox);
-            this.doOrderGP.Controls.Add(this.quantityBox);
-            this.doOrderGP.Controls.Add(this.kitListBox);
-            this.doOrderGP.Controls.Add(this.developerListBox);
-            this.doOrderGP.Controls.Add(this.modelListBox);
-            this.doOrderGP.Location = new System.Drawing.Point(864, 58);
-            this.doOrderGP.Name = "doOrderGP";
-            this.doOrderGP.Size = new System.Drawing.Size(464, 459);
-            this.doOrderGP.TabIndex = 3;
-            this.doOrderGP.TabStop = false;
-            this.doOrderGP.Text = "Новый заказ";
-            // 
-            // modelListBox
-            // 
-            this.modelListBox.FormattingEnabled = true;
-            this.modelListBox.ItemHeight = 16;
-            this.modelListBox.Location = new System.Drawing.Point(217, 44);
-            this.modelListBox.Name = "modelListBox";
-            this.modelListBox.Size = new System.Drawing.Size(159, 36);
-            this.modelListBox.TabIndex = 0;
-            // 
-            // developerListBox
-            // 
-            this.developerListBox.FormattingEnabled = true;
-            this.developerListBox.ItemHeight = 16;
-            this.developerListBox.Location = new System.Drawing.Point(217, 113);
-            this.developerListBox.Name = "developerListBox";
-            this.developerListBox.Size = new System.Drawing.Size(159, 36);
-            this.developerListBox.TabIndex = 1;
-            // 
-            // kitListBox
-            // 
-            this.kitListBox.FormattingEnabled = true;
-            this.kitListBox.ItemHeight = 16;
-            this.kitListBox.Location = new System.Drawing.Point(217, 183);
-            this.kitListBox.Name = "kitListBox";
-            this.kitListBox.Size = new System.Drawing.Size(159, 36);
-            this.kitListBox.TabIndex = 2;
-            // 
-            // quantityBox
-            // 
-            this.quantityBox.Location = new System.Drawing.Point(217, 256);
-            this.quantityBox.Name = "quantityBox";
-            this.quantityBox.Size = new System.Drawing.Size(100, 22);
-            this.quantityBox.TabIndex = 3;
-            // 
-            // priceBox
-            // 
-            this.priceBox.Location = new System.Drawing.Point(217, 305);
-            this.priceBox.Name = "priceBox";
-            this.priceBox.ReadOnly = true;
-            this.priceBox.Size = new System.Drawing.Size(100, 22);
-            this.priceBox.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 44);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(175, 16);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Выберите модель медели";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 113);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(166, 16);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Выберите изготовителя";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 183);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(198, 16);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Выберите набор материалов";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 259);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(141, 16);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Кол-во экземпляров";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 311);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(140, 16);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Итоговая стоимость";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(13, 364);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(134, 44);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Оформить";
-            this.button1.UseVisualStyleBackColor = true;
+            this.orderList.HideSelection = false;
+            this.orderList.Location = new System.Drawing.Point(6, 44);
+            this.orderList.Name = "orderList";
+            this.orderList.Size = new System.Drawing.Size(840, 409);
+            this.orderList.TabIndex = 1;
+            this.orderList.UseCompatibleStateImageBehavior = false;
             // 
             // reloadBt
             // 
@@ -207,14 +99,126 @@
             this.reloadBt.Text = "Обновить";
             this.reloadBt.UseVisualStyleBackColor = true;
             // 
-            // orderList
+            // doOrderGP
             // 
-            this.orderList.HideSelection = false;
-            this.orderList.Location = new System.Drawing.Point(6, 44);
-            this.orderList.Name = "orderList";
-            this.orderList.Size = new System.Drawing.Size(840, 409);
-            this.orderList.TabIndex = 1;
-            this.orderList.UseCompatibleStateImageBehavior = false;
+            this.doOrderGP.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.doOrderGP.Controls.Add(this.kitComboBox);
+            this.doOrderGP.Controls.Add(this.developerComboBox);
+            this.doOrderGP.Controls.Add(this.modelComboBox);
+            this.doOrderGP.Controls.Add(this.confirmBt);
+            this.doOrderGP.Controls.Add(this.label6);
+            this.doOrderGP.Controls.Add(this.label5);
+            this.doOrderGP.Controls.Add(this.label4);
+            this.doOrderGP.Controls.Add(this.label3);
+            this.doOrderGP.Controls.Add(this.label2);
+            this.doOrderGP.Controls.Add(this.priceBox);
+            this.doOrderGP.Controls.Add(this.quantityBox);
+            this.doOrderGP.Location = new System.Drawing.Point(864, 58);
+            this.doOrderGP.Name = "doOrderGP";
+            this.doOrderGP.Size = new System.Drawing.Size(464, 459);
+            this.doOrderGP.TabIndex = 3;
+            this.doOrderGP.TabStop = false;
+            this.doOrderGP.Text = "Новый заказ";
+            // 
+            // kitComboBox
+            // 
+            this.kitComboBox.FormattingEnabled = true;
+            this.kitComboBox.Location = new System.Drawing.Point(217, 183);
+            this.kitComboBox.Name = "kitComboBox";
+            this.kitComboBox.Size = new System.Drawing.Size(241, 24);
+            this.kitComboBox.TabIndex = 13;
+            this.kitComboBox.TextChanged += new System.EventHandler(this.kitComboBox_TextChanged);
+            // 
+            // developerComboBox
+            // 
+            this.developerComboBox.FormattingEnabled = true;
+            this.developerComboBox.Location = new System.Drawing.Point(217, 113);
+            this.developerComboBox.Name = "developerComboBox";
+            this.developerComboBox.Size = new System.Drawing.Size(241, 24);
+            this.developerComboBox.TabIndex = 12;
+            this.developerComboBox.TextChanged += new System.EventHandler(this.developerComboBox_TextChanged);
+            // 
+            // modelComboBox
+            // 
+            this.modelComboBox.FormattingEnabled = true;
+            this.modelComboBox.Location = new System.Drawing.Point(217, 44);
+            this.modelComboBox.Name = "modelComboBox";
+            this.modelComboBox.Size = new System.Drawing.Size(241, 24);
+            this.modelComboBox.TabIndex = 11;
+            this.modelComboBox.TextChanged += new System.EventHandler(this.modelComboBox_TextChanged);
+            // 
+            // confirmBt
+            // 
+            this.confirmBt.Location = new System.Drawing.Point(13, 364);
+            this.confirmBt.Name = "confirmBt";
+            this.confirmBt.Size = new System.Drawing.Size(134, 44);
+            this.confirmBt.TabIndex = 10;
+            this.confirmBt.Text = "Оформить";
+            this.confirmBt.UseVisualStyleBackColor = true;
+            this.confirmBt.Click += new System.EventHandler(this.confirmBt_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 311);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(140, 16);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Итоговая стоимость";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 259);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(141, 16);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Кол-во экземпляров";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 183);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(198, 16);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Выберите набор материалов";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 113);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(166, 16);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Выберите изготовителя";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 44);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(175, 16);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Выберите модель медели";
+            // 
+            // priceBox
+            // 
+            this.priceBox.Location = new System.Drawing.Point(217, 305);
+            this.priceBox.Name = "priceBox";
+            this.priceBox.ReadOnly = true;
+            this.priceBox.Size = new System.Drawing.Size(100, 22);
+            this.priceBox.TabIndex = 4;
+            this.priceBox.Text = "0";
+            // 
+            // quantityBox
+            // 
+            this.quantityBox.Location = new System.Drawing.Point(217, 256);
+            this.quantityBox.Name = "quantityBox";
+            this.quantityBox.ReadOnly = true;
+            this.quantityBox.Size = new System.Drawing.Size(100, 22);
+            this.quantityBox.TabIndex = 3;
+            this.quantityBox.TextChanged += new System.EventHandler(this.quantityBox_TextChanged);
             // 
             // label7
             // 
@@ -262,9 +266,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox orderListGP;
         private System.Windows.Forms.GroupBox doOrderGP;
-        private System.Windows.Forms.ListBox developerListBox;
-        private System.Windows.Forms.ListBox modelListBox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button confirmBt;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -272,10 +274,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox priceBox;
         private System.Windows.Forms.TextBox quantityBox;
-        private System.Windows.Forms.ListBox kitListBox;
         private System.Windows.Forms.ListView orderList;
         private System.Windows.Forms.Button reloadBt;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label balanceLabel;
+        private System.Windows.Forms.ComboBox kitComboBox;
+        private System.Windows.Forms.ComboBox developerComboBox;
+        private System.Windows.Forms.ComboBox modelComboBox;
     }
 }
