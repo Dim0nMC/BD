@@ -229,5 +229,27 @@ namespace BD
             balancecomm.Dispose();
             balanceconn.Close();
         }
+
+        private void reloadBt_Click(object sender, EventArgs e)
+        {
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;Database=postgres;User Id=postgres;password=" + MYProperties.password);
+            conn.Open();
+            NpgsqlCommand comm = new NpgsqlCommand();
+            comm.Connection = conn;
+            comm.CommandType = CommandType.Text;
+            comm.CommandText = $"select номер, Изделия.имя as изделие, Изготовители.имя as изготовитель, id_набора as набор, количество,цена,статус from Заказы_на_изготовление,Изделия,Изготовители " +
+                $"where Заказы_на_изготовление.id_изделия = Изделия.id and Заказы_на_изготовление.id_изготовителя = Изготовители.id";
+            NpgsqlDataReader reader = comm.ExecuteReader();
+            if(reader.HasRows)
+            {
+                DataTable userTable = new DataTable();
+                userTable.Load(reader);
+                dataGridView1.DataSource= userTable;
+            }
+            
+            reader.Close();
+            comm.Dispose();
+            conn.Close();
+        }
     }
 }

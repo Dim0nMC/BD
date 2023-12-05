@@ -31,13 +31,6 @@
             this.Username = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.orderListGP = new System.Windows.Forms.GroupBox();
-            this.orderList = new System.Windows.Forms.ListView();
-            this.ColumnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ColumnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ColumnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.reloadBt = new System.Windows.Forms.Button();
             this.doOrderGP = new System.Windows.Forms.GroupBox();
             this.kitComboBox = new System.Windows.Forms.ComboBox();
@@ -53,10 +46,11 @@
             this.quantityBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.balanceLabel = new System.Windows.Forms.Label();
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buyBt = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.orderListGP.SuspendLayout();
             this.doOrderGP.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // Username
@@ -80,7 +74,7 @@
             // orderListGP
             // 
             this.orderListGP.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.orderListGP.Controls.Add(this.orderList);
+            this.orderListGP.Controls.Add(this.dataGridView1);
             this.orderListGP.Controls.Add(this.reloadBt);
             this.orderListGP.Location = new System.Drawing.Point(6, 73);
             this.orderListGP.Name = "orderListGP";
@@ -88,58 +82,6 @@
             this.orderListGP.TabIndex = 2;
             this.orderListGP.TabStop = false;
             this.orderListGP.Text = "Список Заказов";
-            // 
-            // orderList
-            // 
-            this.orderList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ColumnHeader2,
-            this.ColumnHeader1,
-            this.ColumnHeader3,
-            this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader7,
-            this.columnHeader6});
-            this.orderList.HideSelection = false;
-            this.orderList.Location = new System.Drawing.Point(6, 35);
-            this.orderList.Name = "orderList";
-            this.orderList.Size = new System.Drawing.Size(840, 409);
-            this.orderList.TabIndex = 1;
-            this.orderList.UseCompatibleStateImageBehavior = false;
-            this.orderList.View = System.Windows.Forms.View.Details;
-            // 
-            // ColumnHeader1
-            // 
-            this.ColumnHeader1.Text = "Изделие";
-            this.ColumnHeader1.Width = 111;
-            // 
-            // ColumnHeader2
-            // 
-            this.ColumnHeader2.DisplayIndex = 2;
-            this.ColumnHeader2.Text = "Изготовитель";
-            this.ColumnHeader2.Width = 108;
-            // 
-            // ColumnHeader3
-            // 
-            this.ColumnHeader3.DisplayIndex = 3;
-            this.ColumnHeader3.Text = "Номер набора";
-            this.ColumnHeader3.Width = 112;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.DisplayIndex = 4;
-            this.columnHeader4.Text = "Количество";
-            this.columnHeader4.Width = 102;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.DisplayIndex = 5;
-            this.columnHeader5.Text = "Цена";
-            this.columnHeader5.Width = 128;
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "Статус";
-            this.columnHeader6.Width = 155;
             // 
             // reloadBt
             // 
@@ -149,6 +91,7 @@
             this.reloadBt.TabIndex = 0;
             this.reloadBt.Text = "Обновить";
             this.reloadBt.UseVisualStyleBackColor = true;
+            this.reloadBt.Click += new System.EventHandler(this.reloadBt_Click);
             // 
             // doOrderGP
             // 
@@ -289,12 +232,6 @@
             this.balanceLabel.TabIndex = 5;
             this.balanceLabel.Text = "0";
             // 
-            // columnHeader7
-            // 
-            this.columnHeader7.DisplayIndex = 0;
-            this.columnHeader7.Text = "Номер";
-            this.columnHeader7.Width = 130;
-            // 
             // buyBt
             // 
             this.buyBt.Location = new System.Drawing.Point(6, 44);
@@ -304,6 +241,16 @@
             this.buyBt.Text = "Оплатить";
             this.buyBt.UseVisualStyleBackColor = true;
             this.buyBt.Click += new System.EventHandler(this.buyBt_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 35);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(840, 415);
+            this.dataGridView1.TabIndex = 2;
             // 
             // Client
             // 
@@ -323,6 +270,7 @@
             this.orderListGP.ResumeLayout(false);
             this.doOrderGP.ResumeLayout(false);
             this.doOrderGP.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -342,20 +290,13 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox priceBox;
         private System.Windows.Forms.TextBox quantityBox;
-        private System.Windows.Forms.ListView orderList;
         private System.Windows.Forms.Button reloadBt;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label balanceLabel;
         private System.Windows.Forms.ComboBox kitComboBox;
         private System.Windows.Forms.ComboBox developerComboBox;
         private System.Windows.Forms.ComboBox modelComboBox;
-        private System.Windows.Forms.ColumnHeader ColumnHeader1;
-        private System.Windows.Forms.ColumnHeader ColumnHeader2;
-        private System.Windows.Forms.ColumnHeader ColumnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.ColumnHeader columnHeader6;
-        private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.Button buyBt;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
