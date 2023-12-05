@@ -362,3 +362,5 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /MYProperties.cs
+/Classes/DataBank.cs
+/Classes/MYProperties.cs
