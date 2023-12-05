@@ -25,9 +25,12 @@ namespace BD
 
         private void clientLoginBt_Click(object sender, EventArgs e)
         {
+
+
+
             if (clientLoginBox.Text == "Введите своё имя" || clientLoginBox.Text == "")
             {
-                MessageBox.Show("Ошибка имени пользователя");
+                MessageBox.Show("Ошибка имени пользователя", "Ошибка", MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
             else 
             { 
@@ -37,6 +40,26 @@ namespace BD
                 this.Close();
             }
             
+        }
+
+        private void userRegBt_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void userNameRegBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            userNameRegBox.Text = "";
+        }
+
+        private void userAdressRegBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            userAdressRegBox.Text = "";
+        }
+
+        private void userPhoneRegBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            userPhoneRegBox.Text = "";
         }
     }
 }

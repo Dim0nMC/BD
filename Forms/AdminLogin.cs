@@ -27,7 +27,7 @@ namespace BD
         {
             if(adminLoginBox.Text== "Введите своё имя"|| adminLoginBox.Text == "")
             {
-                MessageBox.Show("Ошибка имени админа");
+                MessageBox.Show("Ошибка имени админа", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else 
             { 
