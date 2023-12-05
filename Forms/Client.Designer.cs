@@ -194,7 +194,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(175, 16);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Выберите модель медели";
+            this.label2.Text = "Выберите модель мебели";
             // 
             // priceBox
             // 
