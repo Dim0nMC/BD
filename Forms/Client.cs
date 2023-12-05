@@ -99,26 +99,59 @@ namespace BD
             kitreader.Close();
             kitcomm.Dispose();
             kitconn.Close();
+
+            NpgsqlConnection balanceconn = new NpgsqlConnection("Server=localhost;Port=5432;Database=postgres;User Id=postgres;password=" + MYProperties.password);
+            balanceconn.Open();
+            NpgsqlCommand balancecomm = new NpgsqlCommand();
+            balancecomm.Connection = balanceconn; ;
+            balancecomm.CommandType = CommandType.Text;
+            balancecomm.CommandText = $"select баланс from Заказчики where id = {DataBank.userid}";
+            NpgsqlDataReader balancereader = balancecomm.ExecuteReader();
+            balancereader.Read();
+            DataBank.balance = balancereader.GetInt32(0);
+            balanceLabel.Text = Convert.ToString(DataBank.balance);
+            balancereader.Close();
+            balancecomm.Dispose();
+            balanceconn.Close();
         }
 
         
         private void confirmBt_Click(object sender, EventArgs e)
         {
+            string summ = DataBank.modelid.ToString() + DataBank.userid.ToString() + DataBank.developerid.ToString()+ DataBank.kitid.ToString()+ quantityBox.Text;
+            int hash = summ.GetHashCode();
+            Random random = new Random();
+            hash = hash%random.Next(hash);
+
             NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;Database=postgres;User Id=postgres;password=" + MYProperties.password);
             conn.Open();
             NpgsqlCommand comm = new NpgsqlCommand();
             comm.Connection = conn; ;
             comm.CommandType = CommandType.Text;
-            comm.CommandText = $"insert into Заказы_на_изготовление(id_изделия,id_заказчика,id_изготовителя,id_набора,количество,цена) " +
-                $"values('{DataBank.modelid}','{DataBank.userid}','{DataBank.developerid}','{DataBank.kitid}',{Convert.ToInt32(quantityBox.Text)},{Convert.ToInt32(priceBox.Text)})";
+            comm.CommandText = $"insert into Заказы_на_изготовление(номер, id_изделия,id_заказчика,id_изготовителя,id_набора,количество,цена) " +
+                $"values({hash},'{DataBank.modelid}','{DataBank.userid}','{DataBank.developerid}','{DataBank.kitid}',{Convert.ToInt32(quantityBox.Text)},{Convert.ToInt32(priceBox.Text)})";
 
             comm.ExecuteNonQuery();
             comm.Dispose();
             conn.Close();
 
+            DataBank.balance -= Convert.ToInt32(priceBox.Text);
+            NpgsqlConnection balanceconn = new NpgsqlConnection("Server=localhost;Port=5432;Database=postgres;User Id=postgres;password=" + MYProperties.password);
+            balanceconn.Open();
+            NpgsqlCommand balancecomm = new NpgsqlCommand();
+            balancecomm.Connection = balanceconn; ;
+            balancecomm.CommandType = CommandType.Text;
+            balancecomm.CommandText = $"update Заказчики set баланс = {DataBank.balance} where id = {DataBank.userid}";
+            balancecomm.ExecuteNonQuery();
+            balanceLabel.Text = Convert.ToString(DataBank.balance);
+            balancecomm.Dispose();
+            balanceconn.Close();
+
+
             Client client = new Client();
             client.Show();
             this.Close();
+
         }
         private void quantityBox_TextChanged(object sender, EventArgs e)
         {
@@ -181,6 +214,20 @@ namespace BD
             conn.Close();
         }
 
-        
+        private void buyBt_Click(object sender, EventArgs e)
+        {
+            balanceLabel.Text = "0";
+            DataBank.balance = 0;
+            NpgsqlConnection balanceconn = new NpgsqlConnection("Server=localhost;Port=5432;Database=postgres;User Id=postgres;password=" + MYProperties.password);
+            balanceconn.Open();
+            NpgsqlCommand balancecomm = new NpgsqlCommand();
+            balancecomm.Connection = balanceconn; ;
+            balancecomm.CommandType = CommandType.Text;
+            balancecomm.CommandText = $"update Заказчики set баланс = {0} where id = {DataBank.userid}";
+            balancecomm.ExecuteNonQuery();
+            balanceLabel.Text = Convert.ToString(DataBank.balance);
+            balancecomm.Dispose();
+            balanceconn.Close();
+        }
     }
 }

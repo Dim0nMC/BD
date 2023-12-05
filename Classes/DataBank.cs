@@ -15,6 +15,7 @@ namespace BD
         public static int modelid = 0;
         public static int developerid = 0;
         public static int kitid = 0;
+        public static int balance = 0;
 
 
         public static string adminname = "";

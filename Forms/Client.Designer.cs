@@ -32,6 +32,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.orderListGP = new System.Windows.Forms.GroupBox();
             this.orderList = new System.Windows.Forms.ListView();
+            this.ColumnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColumnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColumnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.reloadBt = new System.Windows.Forms.Button();
             this.doOrderGP = new System.Windows.Forms.GroupBox();
             this.kitComboBox = new System.Windows.Forms.ComboBox();
@@ -47,12 +53,8 @@
             this.quantityBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.balanceLabel = new System.Windows.Forms.Label();
-            this.ColumnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ColumnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ColumnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.buyBt = new System.Windows.Forms.Button();
             this.orderListGP.SuspendLayout();
             this.doOrderGP.SuspendLayout();
             this.SuspendLayout();
@@ -80,9 +82,9 @@
             this.orderListGP.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.orderListGP.Controls.Add(this.orderList);
             this.orderListGP.Controls.Add(this.reloadBt);
-            this.orderListGP.Location = new System.Drawing.Point(6, 58);
+            this.orderListGP.Location = new System.Drawing.Point(6, 73);
             this.orderListGP.Name = "orderListGP";
-            this.orderListGP.Size = new System.Drawing.Size(852, 459);
+            this.orderListGP.Size = new System.Drawing.Size(852, 456);
             this.orderListGP.TabIndex = 2;
             this.orderListGP.TabStop = false;
             this.orderListGP.Text = "Список Заказов";
@@ -90,23 +92,58 @@
             // orderList
             // 
             this.orderList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ColumnHeader1,
             this.ColumnHeader2,
+            this.ColumnHeader1,
             this.ColumnHeader3,
             this.columnHeader4,
             this.columnHeader5,
+            this.columnHeader7,
             this.columnHeader6});
             this.orderList.HideSelection = false;
-            this.orderList.Location = new System.Drawing.Point(6, 44);
+            this.orderList.Location = new System.Drawing.Point(6, 35);
             this.orderList.Name = "orderList";
             this.orderList.Size = new System.Drawing.Size(840, 409);
             this.orderList.TabIndex = 1;
             this.orderList.UseCompatibleStateImageBehavior = false;
             this.orderList.View = System.Windows.Forms.View.Details;
             // 
+            // ColumnHeader1
+            // 
+            this.ColumnHeader1.Text = "Изделие";
+            this.ColumnHeader1.Width = 111;
+            // 
+            // ColumnHeader2
+            // 
+            this.ColumnHeader2.DisplayIndex = 2;
+            this.ColumnHeader2.Text = "Изготовитель";
+            this.ColumnHeader2.Width = 108;
+            // 
+            // ColumnHeader3
+            // 
+            this.ColumnHeader3.DisplayIndex = 3;
+            this.ColumnHeader3.Text = "Номер набора";
+            this.ColumnHeader3.Width = 112;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.DisplayIndex = 4;
+            this.columnHeader4.Text = "Количество";
+            this.columnHeader4.Width = 102;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.DisplayIndex = 5;
+            this.columnHeader5.Text = "Цена";
+            this.columnHeader5.Width = 128;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Статус";
+            this.columnHeader6.Width = 155;
+            // 
             // reloadBt
             // 
-            this.reloadBt.Location = new System.Drawing.Point(760, 15);
+            this.reloadBt.Location = new System.Drawing.Point(760, 6);
             this.reloadBt.Name = "reloadBt";
             this.reloadBt.Size = new System.Drawing.Size(86, 23);
             this.reloadBt.TabIndex = 0;
@@ -127,9 +164,9 @@
             this.doOrderGP.Controls.Add(this.label2);
             this.doOrderGP.Controls.Add(this.priceBox);
             this.doOrderGP.Controls.Add(this.quantityBox);
-            this.doOrderGP.Location = new System.Drawing.Point(864, 58);
+            this.doOrderGP.Location = new System.Drawing.Point(864, 73);
             this.doOrderGP.Name = "doOrderGP";
-            this.doOrderGP.Size = new System.Drawing.Size(464, 459);
+            this.doOrderGP.Size = new System.Drawing.Size(464, 456);
             this.doOrderGP.TabIndex = 3;
             this.doOrderGP.TabStop = false;
             this.doOrderGP.Text = "Новый заказ";
@@ -252,35 +289,28 @@
             this.balanceLabel.TabIndex = 5;
             this.balanceLabel.Text = "0";
             // 
-            // ColumnHeader1
+            // columnHeader7
             // 
-            this.ColumnHeader1.Text = "Изделие";
+            this.columnHeader7.DisplayIndex = 0;
+            this.columnHeader7.Text = "Номер";
+            this.columnHeader7.Width = 130;
             // 
-            // ColumnHeader2
+            // buyBt
             // 
-            this.ColumnHeader2.Text = "Изготовитель";
-            // 
-            // ColumnHeader3
-            // 
-            this.ColumnHeader3.Text = "Номер набора";
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Количество";
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Цена";
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "Статус";
+            this.buyBt.Location = new System.Drawing.Point(6, 44);
+            this.buyBt.Name = "buyBt";
+            this.buyBt.Size = new System.Drawing.Size(103, 23);
+            this.buyBt.TabIndex = 6;
+            this.buyBt.Text = "Оплатить";
+            this.buyBt.UseVisualStyleBackColor = true;
+            this.buyBt.Click += new System.EventHandler(this.buyBt_Click);
             // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1340, 529);
+            this.ClientSize = new System.Drawing.Size(1340, 541);
+            this.Controls.Add(this.buyBt);
             this.Controls.Add(this.balanceLabel);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.doOrderGP);
@@ -325,5 +355,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.Button buyBt;
     }
 }
