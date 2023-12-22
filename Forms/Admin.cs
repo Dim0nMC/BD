@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -34,6 +35,42 @@ namespace BD.Forms
             idreader.Close();
             idcomm.Dispose();
             idconn.Close();
+
+
+
+            NpgsqlConnection modelconn = new NpgsqlConnection("Server=localhost;Port=5432;Database=postgres;User Id=postgres;password=" + MYProperties.password);
+            modelconn.Open();
+            NpgsqlCommand modelcomm = new NpgsqlCommand();
+            modelcomm.Connection = modelconn;
+            modelcomm.CommandType = CommandType.Text;
+            modelcomm.CommandText = "select Наименование from Материалы  ";
+            NpgsqlDataReader modelreader = modelcomm.ExecuteReader();
+            while (modelreader.Read())
+            {
+                string model = modelreader.GetString(0);
+                materialComboBox.Items.Add(model);
+            }
+            modelreader.Close();
+            modelcomm.Dispose();
+            modelconn.Close();
+
+
+
+            NpgsqlConnection developerconn = new NpgsqlConnection("Server=localhost;Port=5432;Database=postgres;User Id=postgres;password=" + MYProperties.password);
+            developerconn.Open();
+            NpgsqlCommand developercomm = new NpgsqlCommand();
+            developercomm.Connection = developerconn;
+            developercomm.CommandType = CommandType.Text;
+            developercomm.CommandText = "select имя from Поставщики";
+            NpgsqlDataReader developerreader = developercomm.ExecuteReader();
+            while (developerreader.Read())
+            {
+                string developer = developerreader.GetString(0);
+                developerComboBox.Items.Add(developer);
+            }
+            developerreader.Close();
+            developercomm.Dispose();
+            developerconn.Close();
 
         }
 
@@ -128,6 +165,126 @@ namespace BD.Forms
         {
             OrderChange orderChange = new OrderChange();
             orderChange.Show();
+        }
+
+        private void addModelBt_Click(object sender, EventArgs e)
+        {
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;Database=postgres;User Id=postgres;password=" + MYProperties.password);
+            conn.Open();
+            NpgsqlCommand comm = new NpgsqlCommand();
+            comm.Connection = conn; ;
+            comm.CommandType = CommandType.Text;
+            comm.CommandText = $"insert into Изделия(имя) values('{addModelTb.Text}')";
+
+            comm.ExecuteNonQuery();
+            comm.Dispose();
+            conn.Close();
+
+            addModelTb.Text = string.Empty;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;Database=postgres;User Id=postgres;password=" + MYProperties.password);
+            conn.Open();
+            NpgsqlCommand comm = new NpgsqlCommand();
+            comm.Connection = conn;
+            comm.CommandType = CommandType.Text;
+            comm.CommandText = $"select Поставщики.имя as поставщик, Материалы.Наименование as материал, количество_материала,цена from Заказы_на_поставку,Материалы,Поставщики " +
+                $"where Заказы_на_поставку.id_поставщика = Поставщики.id and Заказы_на_поставку.id_материала = Материалы.id and Заказы_на_поставку.id_изготовителя = {DataBank.adminid}";
+            NpgsqlDataReader reader = comm.ExecuteReader();
+            if (reader.HasRows)
+            {
+                DataTable userTable = new DataTable();
+                userTable.Load(reader);
+                dataGridView2.DataSource = userTable;
+            }
+
+            reader.Close();
+            comm.Dispose();
+            conn.Close();
+        }
+
+        private void quantityBox_TextChanged(object sender, EventArgs e)
+        {
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;Database=postgres;User Id=postgres;password=" + MYProperties.password);
+            conn.Open();
+            NpgsqlCommand comm = new NpgsqlCommand();
+            comm.Connection = conn;
+            comm.CommandType = CommandType.Text;
+            comm.CommandText = $"select Цена_за_единицу from Материалы " +
+                $"where Наименование = '{materialComboBox.Text}' ";
+            NpgsqlDataReader reader = comm.ExecuteReader();
+            reader.Read();
+            int price = reader.GetInt32(0);
+            if(quantityBox.Text=="")
+            {
+                price *= 0;
+            }
+            else
+            {
+                price *= Convert.ToInt32(quantityBox.Text);
+            }
+            
+            
+            priceBox.Text = Convert.ToString(price);
+            reader.Close();
+            comm.Dispose();
+            conn.Close();
+        }
+
+        private void materialComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void confirmBt_Click(object sender, EventArgs e)
+        {
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;Database=postgres;User Id=postgres;password=" + MYProperties.password);
+            conn.Open();
+            NpgsqlCommand comm = new NpgsqlCommand();
+            comm.Connection = conn; ;
+            comm.CommandType = CommandType.Text;
+            comm.CommandText = $"insert into Заказы_на_поставку(id_изготовителя,id_поставщика,id_материала,количество_материала,цена) " +
+                $"values('{DataBank.adminid}','{DataBank.distribid}','{DataBank.materialid}','{Convert.ToInt32(quantityBox.Text)}','{Convert.ToInt32(priceBox.Text)}')";
+
+            comm.ExecuteNonQuery();
+            comm.Dispose();
+            conn.Close();
+        }
+
+        private void developerComboBox_TextChanged(object sender, EventArgs e)
+        {
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;Database=postgres;User Id=postgres;password=" + MYProperties.password);
+            conn.Open();
+            NpgsqlCommand comm = new NpgsqlCommand();
+            comm.Connection = conn;
+            comm.CommandType = CommandType.Text;
+            comm.CommandText = $"select id from Поставщики where имя = '{developerComboBox.Text}'";
+            NpgsqlDataReader reader = comm.ExecuteReader();
+            reader.Read();
+            DataBank.distribid = reader.GetInt32(0);
+            reader.Close();
+            comm.Dispose();
+            conn.Close();
+        }
+
+        private void materialComboBox_TextChanged(object sender, EventArgs e)
+        {
+            quantityBox.ReadOnly = false;
+            
+            NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;Database=postgres;User Id=postgres;password=" + MYProperties.password);
+            conn.Open();
+            NpgsqlCommand comm = new NpgsqlCommand();
+            comm.Connection = conn;
+            comm.CommandType = CommandType.Text;
+            comm.CommandText = $"select id from Материалы where Наименование = '{materialComboBox.Text}'";
+            NpgsqlDataReader reader = comm.ExecuteReader();
+            reader.Read();
+            DataBank.materialid = reader.GetInt32(0);
+            reader.Close();
+            comm.Dispose();
+            conn.Close();
         }
     }
 }

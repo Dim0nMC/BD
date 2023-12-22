@@ -22,5 +22,7 @@ namespace BD
         public static int adminid = 0;
 
         public static int orderid = 0;
+        public static int materialid = 0;
+        public static int distribid = 0;   
     }
 }
