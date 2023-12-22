@@ -121,8 +121,8 @@ namespace BD
             string summ = DataBank.modelid.ToString() + DataBank.userid.ToString() + DataBank.developerid.ToString()+ DataBank.kitid.ToString()+ quantityBox.Text;
             int hash = summ.GetHashCode();
             Random random = new Random();
-            hash = hash%random.Next(hash);
-
+            hash = hash%random.Next(Math.Abs(hash));
+            hash = Math.Abs(hash);
             NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;Database=postgres;User Id=postgres;password=" + MYProperties.password);
             conn.Open();
             NpgsqlCommand comm = new NpgsqlCommand();
@@ -238,7 +238,7 @@ namespace BD
             comm.Connection = conn;
             comm.CommandType = CommandType.Text;
             comm.CommandText = $"select номер, Изделия.имя as изделие, Изготовители.имя as изготовитель, id_набора as набор, количество,цена,статус from Заказы_на_изготовление,Изделия,Изготовители " +
-                $"where Заказы_на_изготовление.id_изделия = Изделия.id and Заказы_на_изготовление.id_изготовителя = Изготовители.id";
+                $"where Заказы_на_изготовление.id_изделия = Изделия.id and Заказы_на_изготовление.id_изготовителя = Изготовители.id and Заказы_на_изготовление.id_заказчика = {DataBank.userid}";
             NpgsqlDataReader reader = comm.ExecuteReader();
             if(reader.HasRows)
             {

@@ -136,6 +136,12 @@
     </Compile>
     <Compile Include="Classes\DataBank.cs" />
     <Compile Include="Classes\MYProperties.cs" />
+    <Compile Include="Forms\OrderChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OrderChange.Designer.cs">
+      <DependentUpon>OrderChange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Start.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ClientLogin.resx">
       <DependentUpon>ClientLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OrderChange.resx">
+      <DependentUpon>OrderChange.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Start.resx">
       <DependentUpon>Start.cs</DependentUpon>

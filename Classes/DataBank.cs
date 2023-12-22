@@ -19,5 +19,8 @@ namespace BD
 
 
         public static string adminname = "";
+        public static int adminid = 0;
+
+        public static int orderid = 0;
     }
 }
